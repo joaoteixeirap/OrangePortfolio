@@ -36,8 +36,12 @@ export default function GoogleButton({ next, onError }: GoogleButtonProps) {
     <ButtonBase
       onClick={handleClick}
       disabled={loading}
-      className="flex h-[42px] items-center gap-3 rounded bg-white pl-2 pr-4 text-[15px] font-medium text-[#757575]"
+      className="flex h-[42px] items-center gap-3 rounded bg-white text-[15px] font-medium"
       sx={{
+        // padding e cor via sx: o estilo base do ButtonBase sobrescreve classes utilitárias
+        pl: 1,
+        pr: 2,
+        color: "#757575",
         boxShadow: "0 1px 1px rgba(0,0,0,0.14), 0 0 1px rgba(0,0,0,0.08), 0 2px 3px rgba(0,0,0,0.1)",
         letterSpacing: "0.2px",
         "&:hover": { boxShadow: "0 0 0 2px rgba(66,133,244,0.35)" },

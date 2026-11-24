@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type AuthLayoutProps = {
   illustration: "login" | "cadastro";
@@ -34,6 +35,11 @@ export default function AuthLayout({ illustration, notice, children }: AuthLayou
           {notice}
         </div>
         <div className="w-full max-w-[517px] animate-fade-in-up">{children}</div>
+        <footer className="absolute inset-x-0 bottom-4 text-center text-sm">
+          <Link href="/privacidade" className="rounded text-neutral-100 hover:text-neutral-110 hover:underline">
+            Política de privacidade
+          </Link>
+        </footer>
       </main>
     </div>
   );
