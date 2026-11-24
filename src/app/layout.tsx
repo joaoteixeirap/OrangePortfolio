@@ -1,46 +1,36 @@
 import "./globals.css";
-import type { Metadata } from "next";
-import Header from "@/components/header";
-import { createClient } from "@/utils/supabase/server";
+import type { Metadata, Viewport } from "next";
+import { Roboto } from "next/font/google";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import Providers from "./providers";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
+  variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
-  title: "Orange Portfolio",
-  description: "My App is a...",
+  title: {
+    default: "Orange Portfólio",
+    template: "%s | Orange Portfólio",
+  },
+  description:
+    "Cadastre, organize e compartilhe seus projetos. Descubra o trabalho de outras pessoas da comunidade.",
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const supabase = await createClient();
-  const { data: authData, error: authError } = await supabase.auth.getUser();
+export const viewport: Viewport = {
+  themeColor: "#111133",
+};
 
-  let user = null;
-
-  if (!authError && authData?.user) {
-    const { data: userData, error: userError } = await supabase
-      .from("usuarios")
-      .select("nome, sobrenome")
-      .eq("id", authData.user.id)
-      .single();
-
-    if (!userError && userData) {
-      user = {
-        nome: userData.nome ?? "",
-        sobrenome: userData.sobrenome ?? "",
-        email: authData.user.email ?? "",
-      };
-    }
-  }
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-BR" className={roboto.variable}>
       <body>
-        <div id="root">
-          <Header user={user} />
-          {children}
-        </div>
+        <AppRouterCacheProvider>
+          <Providers>{children}</Providers>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

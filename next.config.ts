@@ -1,29 +1,40 @@
 import type { NextConfig } from "next";
 
+// Capas vêm do Storage do Supabase; avatares do Google vêm de googleusercontent.
+const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
+  : null;
+
 const nextConfig: NextConfig = {
-  basePath: "",
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  poweredByHeader: false,
   images: {
-    dangerouslyAllowSVG: true,
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "placehold.co",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "rbleucyoxsngvodjkkgc.supabase.co",
-        port: "",
-        pathname: "/storage/v1/object/public/projetos/**",
-      },
+      ...(supabaseHost
+        ? [
+            {
+              protocol: "https" as const,
+              hostname: supabaseHost,
+              pathname: "/storage/v1/object/public/project-covers/**",
+            },
+          ]
+        : []),
+      { protocol: "https", hostname: "*.googleusercontent.com" },
     ],
   },
-
-  // assetPrefix: "https://meu-amigo-misterio.vercel.app",
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
