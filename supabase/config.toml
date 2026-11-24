@@ -1,0 +1,31 @@
+# Configuração do Supabase CLI (desenvolvimento local e `supabase link`).
+# Os valores de produção (Site URL, Redirect URLs, Google) são configurados
+# no painel do Supabase; veja o passo a passo de deploy.
+project_id = "orange-portfolio"
+
+[api]
+schemas = ["public", "graphql_public"]
+
+[db]
+major_version = 17
+
+[auth]
+site_url = "http://localhost:3000"
+additional_redirect_urls = [
+  "http://localhost:3000/auth/callback",
+  "http://localhost:3000/auth/confirm",
+]
+minimum_password_length = 6
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+
+[auth.external.google]
+enabled = true
+client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
+skip_nonce_check = false
+
+[storage]
+file_size_limit = "5MiB"
