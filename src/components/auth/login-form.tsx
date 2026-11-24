@@ -37,7 +37,7 @@ export default function LoginForm({ next, error }: { next?: string; error?: stri
       illustration="login"
       notice={notice && <NoticeAlert notice={notice} onClose={() => setNotice(null)} />}
     >
-      <h1 className="text-center text-2xl text-principal-90 sm:text-4xl xl:text-5xl">
+      <h1 className="text-center text-2xl text-principal-90 sm:text-4xl lg:-mx-10 lg:whitespace-nowrap xl:text-5xl">
         Entre no Orange Portfólio
       </h1>
 
@@ -54,8 +54,8 @@ export default function LoginForm({ next, error }: { next?: string; error?: stri
           name="email"
           type="email"
           autoComplete="email"
-          required
           fullWidth
+          slotProps={{ htmlInput: { "aria-required": true } }}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           error={Boolean(state.errors?.email)}
@@ -65,7 +65,6 @@ export default function LoginForm({ next, error }: { next?: string; error?: stri
           label="Password"
           name="password"
           autoComplete="current-password"
-          required
           fullWidth
           value={password}
           onChange={(e) => setPassword(e.target.value)}

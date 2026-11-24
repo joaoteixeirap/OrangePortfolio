@@ -26,7 +26,7 @@ export default function AuthLayout({ illustration, notice, children }: AuthLayou
           className="h-full w-auto object-cover object-left"
         />
       </div>
-      <main className="relative flex flex-1 flex-col items-center justify-center px-6 py-16 sm:px-10">
+      <main className="relative flex flex-1 flex-col items-center justify-start px-6 pb-16 pt-28 sm:px-10 lg:justify-center lg:py-16">
         <div
           className="absolute inset-x-6 top-6 flex justify-center sm:top-10 lg:top-[7%]"
           aria-live="polite"

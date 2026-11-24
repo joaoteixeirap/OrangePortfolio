@@ -17,6 +17,8 @@ type ProjectCardProps = {
   onEdit?: (project: Project) => void;
   onDelete?: (project: Project) => void;
   onTagClick?: (tag: string) => void;
+  /** Tags abaixo do card (Meus projetos). No Descobrir o protótipo não mostra. */
+  showTags?: boolean;
   priority?: boolean;
 };
 
@@ -28,6 +30,7 @@ export default function ProjectCard({
   onEdit,
   onDelete,
   onTagClick,
+  showTags = false,
   priority,
 }: ProjectCardProps) {
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
@@ -113,7 +116,9 @@ export default function ProjectCard({
 
       <div className="flex items-center justify-between gap-3">
         <ProjectMeta author={project.author} createdAt={project.created_at} />
-        <TagChips tags={project.tags} max={2} onTagClick={onTagClick} className="shrink-0 justify-end" />
+        {showTags && (
+          <TagChips tags={project.tags} max={2} onTagClick={onTagClick} className="shrink-0 justify-end" />
+        )}
       </div>
     </article>
   );

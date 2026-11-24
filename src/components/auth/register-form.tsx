@@ -50,7 +50,8 @@ export default function RegisterForm() {
       setValues((v) => ({ ...v, [name]: e.target.value })),
     error: Boolean(state.errors?.[name]),
     helperText: state.errors?.[name],
-    required: true,
+    required: name === "nome" || name === "sobrenome", // asterisco só onde o Figma mostra
+    slotProps: { htmlInput: { "aria-required": true } },
     fullWidth: true,
   });
 

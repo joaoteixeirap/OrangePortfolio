@@ -96,6 +96,7 @@ export default function MyProjectsView({ profile, projects, tagSuggestions }: My
           onChange={setQuery}
           resultCount={filtered.length}
           total={projects.length}
+          maxWidth={513}
         />
 
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -113,6 +114,7 @@ export default function MyProjectsView({ profile, projects, tagSuggestions }: My
                 onEdit={(p) => setDialog({ kind: "form", project: p })}
                 onDelete={(p) => setDialog({ kind: "delete", project: p })}
                 onTagClick={setQuery}
+                showTags
               />
             ))
           )}

@@ -36,7 +36,7 @@ export default function GoogleButton({ next, onError }: GoogleButtonProps) {
     <ButtonBase
       onClick={handleClick}
       disabled={loading}
-      className="flex h-[42px] items-center gap-3 rounded bg-white pl-2 pr-3 text-[15px] font-medium text-neutral-110"
+      className="flex h-[42px] items-center gap-3 rounded bg-white pl-2 pr-4 text-[15px] font-medium text-[#757575]"
       sx={{
         boxShadow: "0 1px 1px rgba(0,0,0,0.14), 0 0 1px rgba(0,0,0,0.08), 0 2px 3px rgba(0,0,0,0.1)",
         letterSpacing: "0.2px",

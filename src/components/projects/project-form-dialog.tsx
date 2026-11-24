@@ -174,7 +174,7 @@ function ProjectForm({
   const coverErrorId = `${uid}-capa-erro`;
 
   const uploadArea = (
-    <div className="flex flex-col gap-4">
+    <div className="flex w-full flex-col gap-4">
       <p id={`${uid}-capa-label`} className="text-base text-neutral-110">
         Selecione o conteúdo que você deseja fazer upload
       </p>
@@ -206,7 +206,7 @@ function ProjectForm({
         }}
         aria-labelledby={`${uid}-capa-label ${uid}-capa-acao`}
         aria-describedby={errors.coverUrl ? coverErrorId : undefined}
-        className={`group relative w-full overflow-hidden rounded text-left outline-offset-2 transition ${
+        className={`group relative flex w-full flex-1 flex-col overflow-hidden rounded text-left outline-offset-2 transition ${
           errors.coverUrl ? "ring-2 ring-error-100" : ""
         } ${dragging ? "ring-2 ring-info-90" : ""}`}
       >
@@ -221,7 +221,7 @@ function ProjectForm({
             </span>
           </>
         ) : (
-          <span className="flex aspect-[3/2] w-full flex-col items-center justify-center gap-4 bg-neutral-70 px-8 transition-colors group-hover:bg-[#DCE0EB] md:aspect-[608/475]">
+          <span className="flex aspect-[3/2] w-full flex-1 flex-col items-center justify-center gap-4 bg-neutral-70 px-8 transition-colors group-hover:bg-[#DCE0EB] md:aspect-auto md:min-h-[300px]">
             <CollectionsIcon sx={{ fontSize: 46, color: brand.neutral120 }} aria-hidden />
             <span id={`${uid}-capa-acao`} className="text-sm text-neutral-110 sm:text-base">
               Compartilhe seu talento com milhares de pessoas
@@ -244,10 +244,9 @@ function ProjectForm({
         label="Título"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        required
         error={Boolean(errors.title)}
         helperText={errors.title}
-        slotProps={{ htmlInput: { maxLength: 100 } }}
+        slotProps={{ htmlInput: { maxLength: 100, "aria-required": true } }}
         fullWidth
       />
       <Autocomplete
@@ -280,8 +279,9 @@ function ProjectForm({
           <TextField
             {...params}
             label="Tags"
+            placeholder={tags.length ? undefined : "Ex.: UX, Web (Enter ou vírgula para separar)"}
             error={Boolean(errors.tags)}
-            helperText={errors.tags ?? (tags.length ? undefined : "Separe com vírgula ou Enter, ex.: UX, Web")}
+            helperText={errors.tags}
           />
         )}
       />
@@ -311,13 +311,13 @@ function ProjectForm({
 
   return (
     <form onSubmit={handleSubmit} noValidate className="px-6 py-6 md:px-[30px] md:py-[30px]">
-      <h2 id="form-projeto-titulo" className="mb-6 text-2xl text-neutral-110">
+      <h2 id="form-projeto-titulo" className="mb-4 text-2xl text-neutral-110">
         {mode === "create" ? "Adicionar projeto" : "Editar projeto"}
       </h2>
 
       {/* Desktop: upload à esquerda, campos à direita. Mobile: campos primeiro (como no Figma). */}
       <div className="grid gap-6 md:grid-cols-2 md:gap-6">
-        <div className="order-2 md:order-1 md:-mt-11">{uploadArea}</div>
+        <div className="order-2 flex md:order-1">{uploadArea}</div>
         <div className="order-1 md:order-2">{fields}</div>
       </div>
 

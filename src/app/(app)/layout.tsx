@@ -20,7 +20,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           email: user.email,
         }}
       />
-      <main id="conteudo" className="mx-auto w-full max-w-[1440px] px-6 pb-20 lg:px-14">
+      <main id="conteudo" className="mx-auto w-full max-w-[1440px] px-6 pb-20 lg:px-8">
         {children}
       </main>
     </>

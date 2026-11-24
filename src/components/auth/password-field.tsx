@@ -7,13 +7,15 @@ import TextField, { type TextFieldProps } from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-export default function PasswordField(props: Omit<TextFieldProps, "type">) {
+export default function PasswordField({ slotProps, ...props }: Omit<TextFieldProps, "type">) {
   const [visible, setVisible] = useState(false);
   return (
     <TextField
       {...props}
       type={visible ? "text" : "password"}
       slotProps={{
+        ...slotProps,
+        htmlInput: { "aria-required": true },
         input: {
           endAdornment: (
             <InputAdornment position="end">

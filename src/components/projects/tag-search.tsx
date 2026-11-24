@@ -11,13 +11,15 @@ type TagSearchProps = {
   onChange: (value: string) => void;
   resultCount: number;
   total: number;
+  /** Largura máxima do campo (Meus projetos é mais estreito que Descobrir no Figma). */
+  maxWidth?: number;
 };
 
 /** Campo "Buscar tags" do protótipo, com contagem anunciada para leitores de tela. */
-export default function TagSearch({ id, value, onChange, resultCount, total }: TagSearchProps) {
+export default function TagSearch({ id, value, onChange, resultCount, total, maxWidth = 722 }: TagSearchProps) {
   const hasQuery = value.trim().length > 0;
   return (
-    <div className="w-full max-w-[722px]">
+    <div className="w-full" style={{ maxWidth }}>
       <TextField
         id={id}
         label="Buscar tags"

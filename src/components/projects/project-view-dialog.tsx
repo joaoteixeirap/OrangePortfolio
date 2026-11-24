@@ -6,6 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import ProjectCover from "@/components/projects/project-cover";
+import ProjectMeta from "@/components/projects/project-meta";
 import TagChips from "@/components/projects/tag-chips";
 import UserAvatar from "@/components/user-avatar";
 import { formatLongDate, formatMonthYear, fullName, type Project } from "@/lib/projects";
@@ -87,9 +88,9 @@ export default function ProjectViewDialog({ project, open, onClose, onTagClick }
             className="mt-8 md:mt-14"
           />
 
-          <div className="mt-4 flex items-center justify-between gap-3 md:hidden">
-            <Author project={project} />
-            <TagChips tags={project.tags} onTagClick={handleTag} className="justify-end" />
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 md:hidden">
+            <ProjectMeta author={project.author} createdAt={project.created_at} />
+            <TagChips tags={project.tags} onTagClick={handleTag} />
           </div>
 
           {project.description && (
