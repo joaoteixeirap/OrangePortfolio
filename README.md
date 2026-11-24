@@ -90,7 +90,8 @@ Os planos futuros apresentados no pitch:
 
 - [João Pedro Teixeira](https://github.com/joaoteixeirap)
 - [gabrieltdrk](https://github.com/gabrieltdrk)
-- e mais dois integrantes, que não têm perfil no GitHub
+- [cauacodigos](https://github.com/cauacodigos)
+- [LuizHSilvaF](https://github.com/LuizHSilvaF)
 
 ---
 
