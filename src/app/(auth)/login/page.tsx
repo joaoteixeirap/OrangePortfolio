@@ -1,26 +1,13 @@
-import FormLogin from '@/components/form-login'
-import Image from 'next/image'
+import type { Metadata } from "next";
+import LoginForm from "@/components/auth/login-form";
+import { safeNextPath } from "@/lib/site-url";
 
-export default function PaginaLogin() {
+export const metadata: Metadata = { title: "Entrar" };
 
+type Props = { searchParams: Promise<{ next?: string; erro?: string }> };
 
-  return (
-    <div className="flex flex-col lg:flex-row h-screen gap-3 lg:gap-x-40 justify-center items-center animate-fade-in-up">
-      <Image
-        className="hidden lg:block h-auto"
-        src="/img_login.png"
-        width={700}
-        height={700}
-        alt="Picture of the author"
-      />
-      <Image
-        className="block lg:hidden h-auto bg-blue-950"
-        src="/logo_home.png"
-        width={250}
-        height={250}
-        alt="Picture of the author"
-      />
-      <FormLogin />
-    </div>
-  )
+export default async function LoginPage({ searchParams }: Props) {
+  const { next, erro } = await searchParams;
+  const safeNext = next ? safeNextPath(next) : undefined;
+  return <LoginForm next={safeNext} error={erro} />;
 }
