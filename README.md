@@ -86,7 +86,11 @@ Os planos futuros apresentados no pitch:
 - ⬜ **Colaboração entre usuários:** projetos feitos a várias mãos, com coautoria.
 - ⬜ **Contratação de freelancers:** quem visita o portfólio pode chamar a pessoa para um trabalho.
 
-<!--TEAM-->
+## 👥 Equipe (Bugs Busters)
+
+- [João Pedro Teixeira](https://github.com/joaoteixeirap)
+- [gabrieltdrk](https://github.com/gabrieltdrk)
+- e mais dois integrantes, que não têm perfil no GitHub
 
 ---
 
