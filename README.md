@@ -6,7 +6,7 @@
 
 Plataforma em que a pessoa desenvolvedora cadastra, organiza e mostra os projetos que já fez, e descobre o que a comunidade anda construindo.
 
-![1º lugar](https://img.shields.io/badge/🏆_1º_lugar-Hackathon_Unisanta_+_FCamara_2024-FF5522?style=for-the-badge)
+![🏆 1º lugar no Hackathon Unisanta + FCamara 2024](https://img.shields.io/badge/1%C2%BA_lugar-Hackathon_Unisanta_%2B_FCamara_2024-FF5522?style=for-the-badge)
 
 [![Abrir o app](https://img.shields.io/badge/Abrir_o_app-orangeportfolio--alpha.vercel.app-FF5522?style=for-the-badge)](https://orangeportfolio-alpha.vercel.app)
 
