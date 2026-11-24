@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import type { Database } from "@/lib/database.types";
 import { getSupabaseEnv } from "@/lib/env";
 
-const PUBLIC_PATHS = ["/login", "/registro", "/auth"];
+const PUBLIC_PATHS = ["/login", "/registro", "/auth", "/privacidade"];
 const GUEST_ONLY_PATHS = ["/login", "/registro"];
 export const HOME_PATH = "/meus-projetos";
 
