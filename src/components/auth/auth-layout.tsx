@@ -1,0 +1,40 @@
+import Image from "next/image";
+
+type AuthLayoutProps = {
+  illustration: "login" | "cadastro";
+  notice?: React.ReactNode;
+  children: React.ReactNode;
+};
+
+const illustrations = {
+  login: { src: "/img_login.png", width: 525, height: 832 },
+  cadastro: { src: "/img_cadastro.png", width: 549, height: 832 },
+} as const;
+
+/** Ilustração à esquerda (só no desktop) e formulário centralizado à direita. */
+export default function AuthLayout({ illustration, notice, children }: AuthLayoutProps) {
+  const img = illustrations[illustration];
+  return (
+    <div className="flex min-h-dvh bg-white">
+      <div className="relative hidden h-dvh shrink-0 lg:block">
+        <Image
+          src={img.src}
+          width={img.width}
+          height={img.height}
+          alt=""
+          priority
+          className="h-full w-auto object-cover object-left"
+        />
+      </div>
+      <main className="relative flex flex-1 flex-col items-center justify-center px-6 py-16 sm:px-10">
+        <div
+          className="absolute inset-x-6 top-6 flex justify-center sm:top-10 lg:top-[7%]"
+          aria-live="polite"
+        >
+          {notice}
+        </div>
+        <div className="w-full max-w-[517px] animate-fade-in-up">{children}</div>
+      </main>
+    </div>
+  );
+}
